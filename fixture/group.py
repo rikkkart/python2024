@@ -26,7 +26,7 @@ class GroupHelper:
         wd = self.app.wd
         self.change_field_value("group_name", group.name)
         self.change_field_value("group_header", group.header)
-        self.change_field_value("group_footer", group.name)
+        self.change_field_value("group_footer", group.footer)
 
     def change_field_value(self, field_name, text):
         wd = self.app.wd
@@ -63,3 +63,8 @@ class GroupHelper:
         # submit modification form
         wd.find_element(By.NAME, "update").click()
         self.return_groups_page()
+
+    def count(self):
+        wd = self.app.wd
+        self.open_groups_page()
+        return len(wd.find_elements(By.NAME, "selected[]"))
