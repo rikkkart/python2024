@@ -98,3 +98,8 @@ class ContactHelper:
         wd.find_element(By.XPATH, "//input[@value='Delete']").click()
         self.return_contact_page()
 
+    def count(self):
+        wd = self.app.wd
+        self.open_contact_page()
+        return len(wd.find_elements(By.NAME, "selected[]"))
+
